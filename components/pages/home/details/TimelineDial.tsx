@@ -22,16 +22,16 @@ function fractionToTimeString(frac: number): string {
 }
 
 // Format duration between two time fractions
-function formatDuration(startFrac: number, endFrac: number): string {
-  let diff = endFrac - startFrac;
-  if (diff <= 0) diff += 1;
-  const totalMinutes = Math.round(diff * 24 * 60);
-  const hours = Math.floor(totalMinutes / 60);
-  const minutes = totalMinutes % 60;
-  if (hours === 0) return `${minutes}m`;
-  if (minutes === 0) return `${hours}h`;
-  return `${hours}h ${minutes}m`;
-}
+// function formatDuration(startFrac: number, endFrac: number): string {
+//   let diff = endFrac - startFrac;
+//   if (diff <= 0) diff += 1;
+//   const totalMinutes = Math.round(diff * 24 * 60);
+//   const hours = Math.floor(totalMinutes / 60);
+//   const minutes = totalMinutes % 60;
+//   if (hours === 0) return `${minutes}m`;
+//   if (minutes === 0) return `${hours}h`;
+//   return `${hours}h ${minutes}m`;
+// }
 
 export default function TimelineDial({ frames, onSelectFrame }: TimelineDialProps) {
   const SIZE = 260;
@@ -111,21 +111,21 @@ export default function TimelineDial({ frames, onSelectFrame }: TimelineDialProp
   }, [hoveredIndex, selectedIndex, isScrubbing, activeFrameAtScrub, frames]);
 
   // Calculate active time span for each frame
-  const frameSectors = useMemo(() => {
-    if (sortedFrames.length < 2) return [];
-    return sortedFrames.map((frame, i) => {
-      const startFrac = timeToDayFraction(frame.time);
-      const nextFrame = sortedFrames[(i + 1) % sortedFrames.length];
-      const endFrac = timeToDayFraction(nextFrame.time);
-      const durationStr = formatDuration(startFrac, endFrac);
-      return {
-        frame,
-        startFrac,
-        endFrac,
-        durationStr,
-      };
-    });
-  }, [sortedFrames]);
+  // const frameSectors = useMemo(() => {
+  //   if (sortedFrames.length < 2) return [];
+  //   return sortedFrames.map((frame, i) => {
+  //     const startFrac = timeToDayFraction(frame.time);
+  //     const nextFrame = sortedFrames[(i + 1) % sortedFrames.length];
+  //     const endFrac = timeToDayFraction(nextFrame.time);
+  //     const durationStr = formatDuration(startFrac, endFrac);
+  //     return {
+  //       frame,
+  //       startFrac,
+  //       endFrac,
+  //       durationStr,
+  //     };
+  //   });
+  // }, [sortedFrames]);
 
   // Hour tick marks: 24 total
   const ticks = useMemo(() => {
@@ -400,7 +400,7 @@ export default function TimelineDial({ frames, onSelectFrame }: TimelineDialProp
         </svg>
 
         {/* ── Center Dial Hub (HTML Overlay for crisp graphics) ── */}
-        <div className="absolute inset-0 m-auto w-[136px] h-[136px] rounded-full flex flex-col items-center justify-center p-2 text-center pointer-events-none transition-all duration-300 border border-border/50 bg-card/90 backdrop-blur-xs shadow-inner">
+        <div className="absolute inset-0 m-auto w-34 h-34 rounded-full flex flex-col items-center justify-center p-2 text-center pointer-events-none transition-all duration-300 border border-border/50 bg-card/90 backdrop-blur-xs shadow-inner">
           {displayedFrame ?
             <div className="flex flex-col items-center justify-center gap-1 animate-in fade-in zoom-in-95 duration-200">
               {/* Miniature Frame Image Thumbnail */}
@@ -458,7 +458,7 @@ export default function TimelineDial({ frames, onSelectFrame }: TimelineDialProp
       </div>
 
       {/* ── 24-Hour Scrubbing Slider ── */}
-      <div className="w-full max-w-[260px] flex flex-col gap-1.5 px-2">
+      <div className="w-full max-w-65 flex flex-col gap-1.5 px-2">
         <div className="flex items-center justify-between text-[10px] text-muted-foreground">
           <span className="flex items-center gap-1 font-mono">
             <Sunrise className="w-3 h-3 text-sky-400" /> 06:00

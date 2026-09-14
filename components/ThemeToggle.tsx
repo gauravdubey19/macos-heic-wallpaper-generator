@@ -1,10 +1,10 @@
 "use client";
 
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 /**
  * Animated light/dark theme toggle button.
