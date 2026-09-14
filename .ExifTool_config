@@ -1,0 +1,24 @@
+%Image::ExifTool::UserDefined = (
+    'Image::ExifTool::XMP::Main' => {
+        apple_desktop => {
+            SubDirectory => {
+                TagTable => 'Image::ExifTool::UserDefined::apple_desktop',
+                Namespace => 'apple_desktop',
+            },
+        },
+    },
+);
+
+%Image::ExifTool::UserDefined::apple_desktop = (
+    GROUPS      => { 0 => 'XMP', 1 => 'XMP-apple_desktop', 2 => 'Image' },
+    NAMESPACE   => { 'apple_desktop' => 'http://ns.apple.com/namespace/1.0/' },
+    WRITABLE    => 'string',
+    solar       => { Writable => 'string' },
+    Solar       => { Writable => 'string' },
+    apr         => { Writable => 'string' },
+    Apr         => { Writable => 'string' },
+    h24         => { Writable => 'string' },
+    H24         => { Writable => 'string' },
+);
+
+1;
