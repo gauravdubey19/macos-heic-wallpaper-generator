@@ -1,14 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { Clock, Sunrise, Layers } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useWallpaperContext } from "@/context/WallpaperContext";
-import { cn } from "@/lib/utils";
 import type { TimeDistributionPreset } from "@/lib/types/wallpaper";
+import { cn } from "@/lib/utils";
+import { Clock, Layers, Sunrise } from "lucide-react";
+import React, { useState } from "react";
 
 // ─── Preset Definition ────────────────────────────────────────────────────────
 
@@ -66,7 +66,7 @@ export default function FormModal({ open, onOpenChange }: FormModalProps) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent id="timeline-config-modal" className="sm:max-w-[480px]" aria-describedby="timeline-config-description">
+      <DialogContent id="timeline-config-modal" className="sm:max-w-120" aria-describedby="timeline-config-description">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Clock className="w-5 h-5 text-primary" />
@@ -89,7 +89,7 @@ export default function FormModal({ open, onOpenChange }: FormModalProps) {
                 key={preset.id}
                 id={`preset-${preset.id}`}
                 className={cn(
-                  "cursor-pointer border-2 transition-all duration-150 bg-gradient-to-br",
+                  "cursor-pointer border-2 transition-all duration-150 bg-linear-to-br",
                   preset.gradient,
                   isSelected ? "border-primary shadow-sm shadow-primary/20" : "border-transparent hover:border-border",
                 )}
@@ -105,7 +105,7 @@ export default function FormModal({ open, onOpenChange }: FormModalProps) {
                   <div className="flex items-start gap-3">
                     <div
                       className={cn(
-                        "flex-shrink-0 flex items-center justify-center w-9 h-9 rounded-lg transition-colors",
+                        "shrink-0 flex items-center justify-center w-9 h-9 rounded-lg transition-colors",
                         isSelected ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground",
                       )}
                     >
@@ -123,7 +123,7 @@ export default function FormModal({ open, onOpenChange }: FormModalProps) {
                     {/* Selection indicator */}
                     <div
                       className={cn(
-                        "flex-shrink-0 w-4 h-4 rounded-full border-2 mt-0.5 transition-colors",
+                        "shrink-0 w-4 h-4 rounded-full border-2 mt-0.5 transition-colors",
                         isSelected ? "border-primary bg-primary" : "border-muted-foreground/40",
                       )}
                     >

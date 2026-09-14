@@ -349,7 +349,7 @@ export default function PlistInspector({ frames }: PlistInspectorProps) {
 
             {/* Syntax Highlighted Code Viewer */}
             <div
-              className="relative flex-1 overflow-y-auto max-h-[220px] bg-muted/20 p-3 font-mono text-[10.5px] leading-relaxed border-b border-border/40"
+              className="relative flex-1 overflow-y-auto max-h-55 bg-muted/20 p-3 font-mono text-[10.5px] leading-relaxed border-b border-border/40"
               aria-label="Formatted Apple Plist XML"
             >
               {displayLines.map((line, idx) => (

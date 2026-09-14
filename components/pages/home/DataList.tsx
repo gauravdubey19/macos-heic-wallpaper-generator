@@ -1,17 +1,16 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
-import { ChevronUp, ChevronDown, Trash2, Star, Sun, Moon, Clock } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { useWallpaperContext } from "@/context/WallpaperContext";
-import { cn } from "@/lib/utils";
 import type { WallpaperFrameItem } from "@/lib/types/wallpaper";
+import { cn } from "@/lib/utils";
+import { ChevronDown, ChevronUp, Clock, Moon, Star, Sun, Trash2 } from "lucide-react";
+import Image from "next/image";
 
 // ─── Frame Row ────────────────────────────────────────────────────────────────
 
@@ -79,7 +78,7 @@ function FrameRow({ frame, isFirst, isLast }: FrameRowProps) {
           </div>
 
           {/* ── Thumbnail ── */}
-          <div className="relative flex-shrink-0 w-24 h-[88px] bg-muted overflow-hidden">
+          <div className="relative shrink-0 w-24 h-22 bg-muted overflow-hidden">
             <Image src={frame.previewUrl} alt={frame.fileName} fill className="object-cover" sizes="96px" unoptimized />
             {/* Frame info overlay */}
             <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-[10px] text-center py-0.5 font-mono">
@@ -92,14 +91,14 @@ function FrameRow({ frame, isFirst, isLast }: FrameRowProps) {
             {/* Top row: filename + badges */}
             <div className="flex items-start justify-between gap-2">
               <div className="min-w-0">
-                <p className="text-sm font-medium text-foreground truncate max-w-[200px]" title={frame.fileName}>
+                <p className="text-sm font-medium text-foreground truncate max-w-50" title={frame.fileName}>
                   {frame.fileName}
                 </p>
                 <p className="text-xs text-muted-foreground mt-0.5">{formatFileSize(frame.fileSize)}</p>
               </div>
 
               {/* Active mode badges */}
-              <div className="flex items-center gap-1 flex-shrink-0">
+              <div className="flex items-center gap-1 shrink-0">
                 {frame.isPrimary && (
                   <Badge
                     variant="secondary"
@@ -134,7 +133,7 @@ function FrameRow({ frame, isFirst, isLast }: FrameRowProps) {
             <div className="flex items-center gap-3 mt-2">
               {/* Time picker */}
               <div className="flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-muted-foreground flex-shrink-0" />
+                <Clock className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
                 <Input
                   id={`frame-time-${frame.index}`}
                   type="time"

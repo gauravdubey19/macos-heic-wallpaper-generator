@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
-import { Download, ImagePlus, Clock, AlertCircle, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { useWallpaperContext } from "@/context/WallpaperContext";
+import { AlertCircle, Clock, Download, ImagePlus, X } from "lucide-react";
+import { useState } from "react";
 import FormModal from "./FormModal";
 
 interface ActionBarProps {
@@ -25,11 +25,11 @@ export default function ActionBar({ onAddMore }: ActionBarProps) {
     <>
       <FormModal open={presetModalOpen} onOpenChange={setPresetModalOpen} />
 
-      <div id="wallpaper-action-bar" className="sticky bottom-0 z-20 pt-3 pb-4 bg-gradient-to-t from-background via-background/95 to-transparent">
+      <div id="wallpaper-action-bar" className="sticky bottom-0 z-20 pt-3 pb-4 bg-linear-to-t from-background via-background/95 to-transparent">
         {/* Error alert */}
         {generationError && (
           <Alert id="generation-error-alert" variant="destructive" className="mb-3 flex items-start gap-2" role="alert">
-            <AlertCircle className="h-4 w-4 flex-shrink-0 mt-0.5" />
+            <AlertCircle className="h-4 w-4 shrink-0 mt-0.5" />
             <AlertDescription className="flex-1 text-sm">{generationError}</AlertDescription>
             <Button
               id="dismiss-error-btn"
@@ -81,7 +81,7 @@ export default function ActionBar({ onAddMore }: ActionBarProps) {
           <Button
             id="generate-download-btn"
             size="sm"
-            className="gap-2 min-w-[200px] font-semibold transition-all"
+            className="gap-2 min-w-50 font-semibold transition-all"
             onClick={generateAndDownload}
             disabled={!canGenerate}
             aria-busy={isGenerating}
